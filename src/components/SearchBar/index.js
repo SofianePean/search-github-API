@@ -1,18 +1,38 @@
 // == Import npm
-import React from 'react';
+import React, { useState } from 'react';
+import { Input } from 'semantic-ui-react';
 
 // == Import
 import './SearchBar.scss';
 
 // == Composant
-const SearchBar = () => {
-  
-  return(
-  <div className="search-bar">
-    <h1>SearchBar</h1>
-  </div>
-);
-}
+const SearchBar = (props) => {
+  const [inputSearch, setinputSearch] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(inputSearch);
+    props.Onsubmit && props.Onsubmit(inputSearch)
+    setinputSearch('');
+  };
+
+  const OnInputChange = (event) => {
+    const { value } = event.currentTarget;
+    setinputSearch(value);
+  };
+
+  return (
+    <form className="search-bar" onSubmit={handleSubmit}>
+      <Input
+        className="search-bar-input"
+        icon="search"
+        placeholder="Search..."
+        value={inputSearch}
+        onChange={OnInputChange}
+      />
+    </form>
+  );
+};
 
 // == Export
 export default SearchBar;

@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import ReposResult from './ReposResult';
 
 // == Import
 import './ReposResults.scss';
@@ -8,8 +9,17 @@ import './ReposResults.scss';
 const ReposResults = () => {
   
   return(
-  <div className="repos-results">
-    <h1>ReposResults</h1>
+    <div className="reposresult-list">
+  <ReposResult />
+  <ReposResult />
+  <ReposResult />
+  <ReposResult />
+  <ReposResult />
+  <ReposResult />
+  <ReposResult />
+  <ReposResult />
+  <ReposResult />
+  <ReposResult />
   </div>
 );
 }
