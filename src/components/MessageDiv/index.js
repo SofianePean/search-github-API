@@ -6,14 +6,11 @@ import { Message } from 'semantic-ui-react';
 import './Message.scss';
 
 // == Composant
-const MessageDiv = () => {
-  
-  return(
+const MessageDiv = ({ nbDataRepo }) => (
   <div className="message">
-    <Message className="message" visible>You can always see me</Message>
+    <Message className="message" visible>La recherche a donné {nbDataRepo} résultats</Message>
   </div>
 );
-}
 
 // == Export
 export default MessageDiv;

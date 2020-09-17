@@ -12,13 +12,15 @@ import './GithubAPI.scss';
 // == Composant
 const GithubAPI = () => {
   const [dataRepos, setdataRepos] = useState([]);
+  const [nbDataRepo, setNbDataRepo] = useState([]);
   const url = 'https://api.github.com/search/repositories?q=';
 
   const getDataFromAPI = (valueInput) => {
     axios
       .get(url + valueInput)
       .then((response) => {
-        console.log(response.data);
+        setdataRepos(response.data.items);
+        setNbDataRepo(response.data.total_count);
       })
       .catch((e) => {
         console.log('Error message', e.message);
@@ -33,8 +35,8 @@ const GithubAPI = () => {
     <div className="app">
       <Header />
       <SearchBar Onsubmit={Onsubmit} />
-      <MessageDiv />
-      <ReposResults />
+      <MessageDiv nbDataRepo={nbDataRepo} />
+      <ReposResults repositories={dataRepos} />
     </div>
   );
 };
