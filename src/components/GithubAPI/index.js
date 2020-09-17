@@ -1,5 +1,6 @@
 // == Import npm
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import SearchBar from 'src/components/SearchBar';
 import MessageDiv from 'src/components/MessageDiv';
 import ReposResults from 'src/components/ReposResults';
@@ -10,19 +11,33 @@ import './GithubAPI.scss';
 
 // == Composant
 const GithubAPI = () => {
-  const Onsubmit = (valueInput) => {
-    
-    console.log('je suis dans le parent', valueInput);
+  const [dataRepos, setdataRepos] = useState([]);
+  const url = 'https://api.github.com/search/repositories?q=';
+
+  const getDataFromAPI = (valueInput) => {
+    axios
+      .get(url + valueInput)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log('Error message', e.message);
+      });
   };
-  return(
-  <div className="app">
-    <Header />
-    <SearchBar Onsubmit={Onsubmit} />
-    <MessageDiv />
-    <ReposResults />
-  </div>
-);
-}
+
+  const Onsubmit = (valueInput) => {
+    getDataFromAPI(valueInput);
+  };
+
+  return (
+    <div className="app">
+      <Header />
+      <SearchBar Onsubmit={Onsubmit} />
+      <MessageDiv />
+      <ReposResults />
+    </div>
+  );
+};
 
 // == Export
 export default GithubAPI;
