@@ -9,7 +9,6 @@ import './Message.scss';
 // == Composant
 const MessageDiv = ({ nbDataRepo }) => {
   const getMessage = (valueDataRepos) => {
-    console.log('je rentre dans le if')
     let message = '';
     if (valueDataRepos <= 0) {
       message += 'Vous n\'avez pas encore effectué de recherche';
