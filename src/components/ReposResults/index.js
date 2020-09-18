@@ -10,7 +10,12 @@ import './ReposResults.scss';
 const ReposResults = ({ repositories }) => (
   <div className="reposresult-list">
     {repositories.map((repo) => (
-      <ReposResult key={repo.id} fullName={repo.full_name} image={repo.owner.avatar_url} {...repo} />
+      <ReposResult
+        key={repo.id}
+        fullName={repo.full_name}
+        image={repo.owner.avatar_url}
+        {...repo}
+      />
     ))}
   </div>
 );

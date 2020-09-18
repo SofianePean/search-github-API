@@ -26,7 +26,7 @@ const GithubAPI = () => {
         console.log('Error message', e.message);
       });
   };
-
+  console.log(nbDataRepo.length);
   const Onsubmit = (valueInput) => {
     getDataFromAPI(valueInput);
   };
